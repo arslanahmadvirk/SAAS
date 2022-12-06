@@ -1,18 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import react from "react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 // import { STRAPI_URL } from "../utils/strapi_url";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../redux/authSlice";
 import User from "../../Layouts/User";
 export default function Subscriptions() {
+  const router = useRouter();
+  const handleRoute = () => {
+    router.push("/user/upgrade");
+  };
   return (
     <User>
-      <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60">
+      <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60 md:mx-12 mt-5">
+        <button
+          type="button"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-5 mt-5"
+          onClick={() => handleRoute()}
+        >
+          Upgrade Now
+        </button>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
             Subscriptions Overview

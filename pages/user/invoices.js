@@ -12,7 +12,7 @@ import User from "../../Layouts/User";
 export default function Invoices() {
   return (
     <User>
-      <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60">
+      <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60 md:mx-12 mt-5">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
             Invoices Overview

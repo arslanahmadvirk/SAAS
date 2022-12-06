@@ -12,7 +12,7 @@ import User from "../../Layouts/User";
 export default function Dashboard() {
   return (
     <User>
-      <section className="text-gray-600 body-font mb-10">
+      <section className="text-gray-600 body-font mb-10 lg:max-w-6xl mx-auto ">
         <div className="container px-12 py-0 mb-5 mx-auto">
           <div className="flex flex-col">
             <div className="h-1 bg-gray-200 rounded overflow-hidden">
