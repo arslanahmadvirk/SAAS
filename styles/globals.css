@@ -88,3 +88,10 @@ a {
 .strength-Strong span {
   color: #03b11a;
 }
+
+.sidebar__mobile {
+  position: absolute;
+  left: -200px;
+  top: 45px;
+
+}
