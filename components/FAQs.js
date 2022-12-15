@@ -2,9 +2,9 @@
 import Link from "next/link";
 export default function FAQs() {
   return (
-    <section className=" bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-white">
+    <section className=" bg-gray-900 mt-12">
+      <div className=" mx-auto py-0 px-5 max-w-screen-xl sm:py-16 md:px-12">
+        <h2 className="mb-8 text-3xl tracking-tight font-extrabold text-white">
           Frequently asked questions
         </h2>
         <div className="grid pt-8 text-left border-t md:gap-16 border-gray-700 md:grid-cols-2">

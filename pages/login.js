@@ -3,6 +3,7 @@ import react from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Link from "next/link";
 import Router, { useRouter } from "next/router";
 export default function Email() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,10 @@ export default function Email() {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/user/dashboard");
+    toast.success("Login Successfull", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    localStorage.setItem("isLoggedIn", true);
   };
 
   return (
@@ -93,12 +98,14 @@ export default function Email() {
                     </label>
                   </div>
                 </div>
-                <a
-                  href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline "
-                >
-                  Forgot password?
-                </a>
+                <Link href="/resetPassword" passHref>
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-primary-600 hover:underline "
+                  >
+                    Forgot password?
+                  </a>
+                </Link>
               </div>
               <button
                 type="submit"

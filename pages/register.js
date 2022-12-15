@@ -10,19 +10,40 @@ import Router, { useRouter } from "next/router";
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [isLoggedin, setisLoggedin] = useState(false);
+  const [userName, setUserName] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password.length < 8) {
+      toast.error("Password should not less than 8 characters!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      toast.error("Please enter correct email!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      const regEmail = localStorage.getItem("RegisterDetails");
+      if (regEmail == email) {
+        toast.error("Account Already Exist!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        localStorage.setItem("RegisterDetails", email);
+        toast.success("Account Created Successfully", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    }
   };
 
   return (
     <section className="bg-gray-50  mt-12">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 bg-white">
         <a
           href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 "
+          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 mt-0 md:mt-12"
         >
           <img
             className="w-8 h-8 mr-2"
@@ -55,7 +76,7 @@ export default function Register() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="john"
                   required
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
               <div>

@@ -4,22 +4,27 @@ import { useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
+import { toast } from "react-toastify";
 const Navbar = () => {
   const dispatch = useDispatch();
-  const [isLoggedin, setisLoggedin] = useState(false);
-  const auth = useSelector((state) => state.auth.isLoggedin);
+  const [isLoggedin, setisLoggedin] = useState();
   const router = useRouter();
+
   useEffect(() => {
-    setisLoggedin(auth);
-    setisLoggedin(localStorage.getItem("isLoggedin"));
-  }, [auth]);
+    if (!isLoggedin) {
+      const loginData = localStorage.getItem("isLoggedIn");
+      setisLoggedin(loginData);
+    }
+  });
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    dispatch(logout());
     setisLoggedin(false);
-    localStorage.removeItem("isLoggedin");
+    localStorage.removeItem("isLoggedIn");
     router.push("/login");
+    toast.success("Logout Successfull", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   return (
@@ -38,22 +43,46 @@ const Navbar = () => {
           </a>
         </Link>
         <div class="flex md:order-2 ">
-          <Link href="/login">
-            <button
-              type="button"
-              className="text-white hidden md:flex focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5 text-center mr-3 md:mr-2 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
-            >
-              Login
-            </button>
-          </Link>
-          <Link href="/register" passHref>
-            <button
-              type="button"
-              className="text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
-            >
-              Get started
-            </button>
-          </Link>
+          {isLoggedin ? (
+            <>
+              <button
+                type="button"
+                className="text-white hidden md:flex focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5 text-center mr-3 md:mr-2 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
+                onClick={(e) => handleLogOut(e)}
+              >
+                LogOut
+              </button>
+
+              <Link href="/user/dashboard" passHref>
+                <button
+                  type="button"
+                  className="text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
+                >
+                  Dashboard
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <button
+                  type="button"
+                  className="text-white hidden md:flex focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5 text-center mr-3 md:mr-2 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
+                >
+                  Login
+                </button>
+              </Link>
+              <Link href="/register" passHref>
+                <button
+                  type="button"
+                  className="text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 bg-primary-800 hover:bg-primary-900 focus:ring-transparent"
+                >
+                  Get started
+                </button>
+              </Link>
+            </>
+          )}
+
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -119,35 +148,22 @@ const Navbar = () => {
                 Contact
               </a>
             </li>
-
             {isLoggedin ? (
-              <>
-                <Link href="/dashboard">
-                  <li>
-                    <a
-                      href="#"
-                      className="block py-2 pl-3 pr-4 rounded bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 md:text-green-500 md:bg-transparent text-white-500 md:dark:hover:bg-transparent font-bold"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                </Link>
-                <li>
-                  <a
-                    href="#"
-                    className="block py-2 pl-3 pr-4 rounded bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 md:text-green-500 md:bg-transparent text-white-500 md:dark:hover:bg-transparent font-bold"
-                    onClick={(e) => handleLogOut(e)}
-                  >
-                    LogOut
-                  </a>
-                </li>
-              </>
+              <li className="md:hidden">
+                <a
+                  href="#contact"
+                  className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
+                  onClick={(e) => handleLogOut(e)}
+                >
+                  Logout
+                </a>
+              </li>
             ) : (
               <Link href="/login" passHref>
-                <li>
+                <li className="md:hidden">
                   <a
-                    href="#"
-                    className="block md:hidden py-2 pl-3 pr-4 rounded bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 md:text-green-500 md:bg-transparent text-white-500 md:dark:hover:bg-transparent font-bold"
+                    href="#contact"
+                    className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
                   >
                     Login
                   </a>
