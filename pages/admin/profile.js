@@ -8,7 +8,7 @@ import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import FileUploader from "../../components/FileUploader";
 import convertImageToBase64 from "../../components/ImageBase64";
-import User from "../../Layouts/User";
+import Admin from "../../Layouts/Admin";
 export default function Profile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +45,7 @@ export default function Profile() {
     });
   };
   return (
-    <User>
+    <Admin>
       <section className="bg-gray-50">
         <div className="flex flex-col items-center justify-center px-6 py-5 mx-auto lg:py-0 bg-white mb-12">
           <div>
@@ -137,6 +137,6 @@ export default function Profile() {
           </div>
         </div>
       </section>
-    </User>
+    </Admin>
   );
 }
