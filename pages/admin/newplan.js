@@ -35,7 +35,7 @@ export default function NewPlan() {
                     for="planname"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Plane Name
+                    Plan Name
                   </label>
                   <input
                     type="text"
@@ -51,7 +51,7 @@ export default function NewPlan() {
                     for="planname"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Plane Price
+                    Plan Price
                   </label>
                   <input
                     type="number"

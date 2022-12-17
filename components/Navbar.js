@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -124,7 +125,7 @@ const Navbar = () => {
 
             <li>
               <a
-                href="#features"
+                href="/#features"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
               >
                 Features
@@ -133,7 +134,7 @@ const Navbar = () => {
 
             <li>
               <a
-                href="#pricing"
+                href="/#pricing"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
               >
                 Pricing
@@ -142,7 +143,7 @@ const Navbar = () => {
 
             <li>
               <a
-                href="#contact"
+                href="/#contact"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
               >
                 Contact
@@ -151,7 +152,7 @@ const Navbar = () => {
             {isLoggedin ? (
               <li className="md:hidden">
                 <a
-                  href="#contact"
+                  href="#"
                   className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
                   onClick={(e) => handleLogOut(e)}
                 >
@@ -162,7 +163,7 @@ const Navbar = () => {
               <Link href="/login" passHref>
                 <li className="md:hidden">
                   <a
-                    href="#contact"
+                    href="#"
                     className="block py-2 pl-3 pr-4 rounded hover:bg-primary-800 text-lg md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 text-white md:dark:hover:bg-transparent"
                   >
                     Login
