@@ -1,40 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import react from "react";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
 // import { STRAPI_URL } from "../utils/strapi_url";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import Admin from "../../Layouts/Admin";
-export default function Customers() {
-  const router = useRouter();
-  const handleRoute = () => {
-    router.push("/admin/expiredcustomers");
-  };
-  const handleRoute2 = () => {
-    router.push("/admin/activecustomers");
-  };
-
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
+import User from "../../Layouts/User";
+export default function Invoices() {
   return (
-    <Admin>
+    <User>
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60 md:mx-12 mt-5">
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-5 mt-5"
-          onClick={() => handleRoute2()}
-        >
-          Active Customers
-        </button>
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-5 mt-5"
-          onClick={() => handleRoute()}
-        >
-          Expired Customers
-        </button>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-            Customers
+            Unpaid Invoices
             <div className="mt-4">
               <label for="table-search" className="sr-only">
                 Search
@@ -64,22 +45,28 @@ export default function Customers() {
               </div>
             </div>
           </caption>
+
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6">
-                Plan Name
+                Name
               </th>
               <th scope="col" className="py-3 px-6">
-                Customer Name
+                Email
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Plan Name
+              </th>
+
+              <th scope="col" className="py-3 px-6">
+                Plan Interval
               </th>
               <th scope="col" className="py-3 px-6">
                 Paid Amount
               </th>
+
               <th scope="col" className="py-3 px-6">
-                Payment Status
-              </th>
-              <th scope="col" className="py-3 px-6">
-                Purchased Date
+                Purchase Date
               </th>
             </tr>
           </thead>
@@ -89,60 +76,33 @@ export default function Customers() {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Pro Plan
+                Apple
               </th>
-              <td className="py-4 px-6">Akhin KJ</td>
-              <td className="py-4 px-6">$800</td>
-              <td className="py-4 px-6">Succeeded</td>
-              <td className="py-4 px-6">2022-11-02</td>
+              <td className="py-4 px-6">Sliver</td>
+              <td className="py-4 px-6">Laptop</td>
+              <td className="py-4 px-6">$2999</td>
             </tr>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Pro Plan
+                Microsoft
               </th>
-              <td className="py-4 px-6">Akhin KJ</td>
-              <td className="py-4 px-6">$800</td>
-              <td className="py-4 px-6">Succeeded</td>
-              <td className="py-4 px-6">2022-11-02</td>
+              <td className="py-4 px-6">White</td>
+              <td className="py-4 px-6">Laptop PC</td>
+              <td className="py-4 px-6">$1999</td>
             </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr className="bg-white dark:bg-gray-800">
               <th
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Pro Plan
+                Magic
               </th>
-              <td className="py-4 px-6">Akhin KJ</td>
-              <td className="py-4 px-6">$800</td>
-              <td className="py-4 px-6">Succeeded</td>
-              <td className="py-4 px-6">2022-11-02</td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Pro Plan
-              </th>
-              <td className="py-4 px-6">Akhin KJ</td>
-              <td className="py-4 px-6">$800</td>
-              <td className="py-4 px-6">Succeeded</td>
-              <td className="py-4 px-6">2022-11-02</td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Pro Plan
-              </th>
-              <td className="py-4 px-6">Akhin KJ</td>
-              <td className="py-4 px-6">$800</td>
-              <td className="py-4 px-6">Succeeded</td>
-              <td className="py-4 px-6">2022-11-02</td>
+              <td className="py-4 px-6">Black</td>
+              <td className="py-4 px-6">Accessories</td>
+              <td className="py-4 px-6">$99</td>
             </tr>
           </tbody>
         </table>
@@ -247,6 +207,6 @@ export default function Customers() {
           </ul>
         </nav>
       </div>
-    </Admin>
+    </User>
   );
 }

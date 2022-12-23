@@ -6,35 +6,18 @@ import { toast } from "react-toastify";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import Admin from "../../Layouts/Admin";
-export default function Customers() {
+export default function ExpiredCustomers() {
   const router = useRouter();
   const handleRoute = () => {
     router.push("/admin/expiredcustomers");
-  };
-  const handleRoute2 = () => {
-    router.push("/admin/activecustomers");
   };
 
   return (
     <Admin>
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg mb-60 md:mx-12 mt-5">
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-5 mt-5"
-          onClick={() => handleRoute2()}
-        >
-          Active Customers
-        </button>
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-5 mt-5"
-          onClick={() => handleRoute()}
-        >
-          Expired Customers
-        </button>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-            Customers
+            Active Customers
             <div className="mt-4">
               <label for="table-search" className="sr-only">
                 Search
@@ -89,9 +72,9 @@ export default function Customers() {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Pro Plan
+                One Day Test Plan
               </th>
-              <td className="py-4 px-6">Akhin KJ</td>
+              <td className="py-4 px-6">Amala</td>
               <td className="py-4 px-6">$800</td>
               <td className="py-4 px-6">Succeeded</td>
               <td className="py-4 px-6">2022-11-02</td>

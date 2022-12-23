@@ -34,10 +34,10 @@ export default function Hero() {
               </a>
             </Link>
             <a
-              href="#pricing"
-              class="inline-flex items-center justify-center text-sm px-6 py-2 md:px-10 md:py-3 mr-3 md:text-base md:font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-900"
+              href="#"
+              class="inline-flex items-center justify-center text-sm px-6 py-2 md:px-9 md:py-3 mr-3 md:text-base md:font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-900"
             >
-              Pricing
+              Subscribe
             </a>
           </div>
         </div>

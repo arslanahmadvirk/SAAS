@@ -9,7 +9,7 @@ export default function Upgrade() {
   };
   return (
     <User>
-      <section class="bg-white dark:bg-gray-900" id="pricing">
+      <section class="bg-white dark:bg-gray-900 mb-5" id="pricing">
         <div class="py-1 px-4 mx-auto max-w-screen-xl  lg:px-6">
           <div class="space-y-5 lg:grid lg:grid-cols-4 sm:gap-6 xl:gap-5 lg:space-y-0">
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">

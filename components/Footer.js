@@ -74,13 +74,17 @@ export default function Footer() {
                   className="w-full bg-white rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-green-200 focus:border-green-500 text-base outline-none text-gray-200 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
-              <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
+              <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-primary-700 border-0 py-2 px-6 focus:outline-none hover:bg-primary-800 rounded">
                 Submit
               </button>
             </div>
             <p className="text-gray-200 text-sm mt-2 md:text-left text-center">
               Bitters chicharrones fanny pack
             </p>
+            <div className="flex flex-row gap-2 mx-auto justify-center md:justify-start">
+              <img src="/paypal.png" alt="" className="w-[60px] h-[50px]" />
+              <img src="/stripe.png" alt="" className="w-[60px] h-[50px]" />
+            </div>
           </div>
         </div>
       </div>
