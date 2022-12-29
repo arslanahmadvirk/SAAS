@@ -5,7 +5,7 @@ export default function Upgrade() {
   const router = useRouter();
 
   const handleRoute = () => {
-    router.push("/user/paymentMethod");
+    router.push("/user/paymentDetails");
   };
   return (
     <User>
